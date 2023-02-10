@@ -6,10 +6,13 @@ import axios from 'axios';
 const Job = () => {
     const [jobs, setJobs] = useState([])
 
+    const userId = localStorage.getItem("userId")
+
     const getJobs = async () => {
         const response = await axios.get("https://job-board.up.railway.app/jobs")
         setJobs(response.data.data)
     }
+
 
     useEffect(() => {
         getJobs()
@@ -21,7 +24,10 @@ const Job = () => {
             <h2>List of all Created Job</h2>
             {
                 jobs && jobs.map((job) => {
-                    return <CardComp key={job._id} link={`/jobs/${job._id}/applications`} text={"Applicant"} job={job} />
+                    if (userId === job.user) {
+                        return <CardComp key={job._id} link={`/jobs/${job._id}/applications`} text={"Applicant"} job={job} />
+                    }
+                    return ""
                 })
             }
         </div>
