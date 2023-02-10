@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 const CreateJob = () => {
 
@@ -12,6 +13,8 @@ const CreateJob = () => {
     const [experience, setExperience] = useState("")
     const [email, setEmail] = useState("")
     const [token, setToken] = useState("")
+
+    const navigate = useNavigate()
 
     const jobData = {
         title: title,
@@ -25,9 +28,10 @@ const CreateJob = () => {
         const token = Cookies.get('token')
         setToken(token)
         if (!token) {
-            console.log("please login")
+            alert("please login")
+            navigate('/users/login')
         }
-    }, [])
+    }, [navigate])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -37,6 +41,8 @@ const CreateJob = () => {
                 'Content-Type': 'application/json'
             }
         })
+        alert("Job created successfully")
+        navigate('/jobs')
     }
 
     return (
