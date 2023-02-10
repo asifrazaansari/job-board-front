@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Cookies from 'js-cookie';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function Application() {
 
@@ -16,9 +16,10 @@ function Application() {
     const [coverLetter, setCoverLetter] = useState(null)
 
     const [token, setToken] = useState("")
-    
-    const {jobId} = useParams()
-    console.log(jobId)
+
+    const { jobId } = useParams()
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         const token = Cookies.get('token')
@@ -38,23 +39,21 @@ function Application() {
         formData.append('resume', resume);
         formData.append('coverLetter', coverLetter);
 
-
         try {
-            const response = await axios.post(`https://job-board.up.railway.app/jobs/${jobId}/apply`, formData, {
+            await axios.post(`https://job-board.up.railway.app/jobs/${jobId}/apply`, formData, {
                 headers: {
                     'Authorization': `bearer ${token}`,
                     'Content-Type': 'multipart/form-data'
                 }
             })
 
-            console.log(response)
             alert("Application submitted successfully!")
+            navigate('/')
         } catch (error) {
             console.log(error)
         }
     }
 
-    console.log(fname, lname, email, resume)
     return (
         <div className="d-flex justify-content-center mt-5">
             <Form onSubmit={handleSubmit}>
@@ -102,7 +101,7 @@ function Application() {
                     <Form.Group as={Col} controlId="formFile">
                         <Form.Label>Cover Letter</Form.Label>
                         <Form.Control
-                            onChange={(e) => setCoverLetter(e.target.files[1])}
+                            onChange={(e) => setCoverLetter(e.target.files[0])}
                             type="file"
                             accept=".md"
                         />
