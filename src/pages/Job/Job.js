@@ -8,6 +8,8 @@ const Job = () => {
 
     const userId = localStorage.getItem("userId")
 
+    const userName = localStorage.getItem("userName")
+
     const getJobs = async () => {
         const response = await axios.get("https://job-board.up.railway.app/jobs")
         setJobs(response.data.data)
@@ -21,7 +23,7 @@ const Job = () => {
     return (
         <div className='container mt-3'>
             <Button className="float-sm-end" variant="warning" href="/jobs/create">Create New Job</Button>
-            <h2>List of all Created Job</h2>
+            <h2>List of created job by {userName}</h2>
             {
                 jobs && jobs.map((job) => {
                     if (userId === job.user) {

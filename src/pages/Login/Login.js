@@ -51,10 +51,9 @@ const Login = () => {
             localStorage.setItem("userName", userdata.userName);
             localStorage.setItem("userId", userdata.userId);
             navigate("/");
+            window.location.reload();
         }
     }, [userdata, navigate]);
-
-    console.log(userdata)
 
     return (
         <div className="d-flex justify-content-center mt-5">
