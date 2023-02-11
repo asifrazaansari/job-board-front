@@ -2,12 +2,15 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import NavScroll from './components/Navbar';
+import AllApplicant from './pages/Application/AllApplicant';
 import Application from './pages/Application/Application';
 import Home from './pages/Home/Home';
 import CreateJob from './pages/Job/CreateJob';
 import Job from './pages/Job/Job';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+
+
 
 function App() {
   return (
@@ -20,6 +23,7 @@ function App() {
         <Route path='/jobs' element={<Job />} />
         <Route path='/jobs/create' element={<CreateJob />} />
         <Route path='/jobs/:jobId/apply' element={<Application />} />
+        <Route path='/jobs/:jobId/applications' element={<AllApplicant />} />
       </Routes>
 
     </div>
