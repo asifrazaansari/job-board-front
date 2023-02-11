@@ -21,16 +21,18 @@ const AllApplicant = () => {
     }, [])
 
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await axios.get(`https://job-board.up.railway.app/jobs/${jobId}/applications`, {
-                headers: {
-                    'Authorization': `bearer ${token}`
-                }
-            })
-            setApplicants(response.data.data)
+        if (token) {
+            const fetchData = async () => {
+                const response = await axios.get(`https://job-board.up.railway.app/jobs/${jobId}/applications`, {
+                    headers: {
+                        'Authorization': `bearer ${token}`
+                    }
+                })
+                setApplicants(response.data.data)
+            }
+            fetchData()
         }
 
-        fetchData()
     }, [token, jobId])
 
 
