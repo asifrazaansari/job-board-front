@@ -90,7 +90,7 @@ function Application() {
                 </Form.Group>
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="formFile">
-                        <Form.Label>Resume</Form.Label>
+                        <Form.Label>Resume <h6 style={{ color: "red" }}>(In pdf format)</h6></Form.Label>
                         <Form.Control
                             onChange={(e) => setResume(e.target.files[0])}
                             type="file"
@@ -99,11 +99,11 @@ function Application() {
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formFile">
-                        <Form.Label>Cover Letter</Form.Label>
+                        <Form.Label>Cover Letter <h6 style={{ color: "red" }}>(In pdf format)</h6></Form.Label>
                         <Form.Control
                             onChange={(e) => setCoverLetter(e.target.files[0])}
                             type="file"
-                            accept=".md"
+                            accept=".pdf"
                         />
                     </Form.Group>
                 </Row>
