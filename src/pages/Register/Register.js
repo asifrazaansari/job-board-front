@@ -34,7 +34,7 @@ const Register = () => {
 
     return (
         <div className="d-flex justify-content-center mt-5">
-            <Form onSubmit={handleSubmit} style={{ width: "30%" }}>
+            <Form onSubmit={handleSubmit} style={{ width: "100%", maxWidth: "500px", padding: "20px" }}>
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label
                         style={{ fontSize: "25px" }}>
