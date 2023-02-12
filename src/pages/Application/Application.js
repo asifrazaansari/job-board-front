@@ -56,7 +56,7 @@ function Application() {
 
     return (
         <div className="d-flex justify-content-center mt-5">
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} style={{ margin: "0px 10px" }}>
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="formGridEmail">
                         <Form.Label>First Name</Form.Label>

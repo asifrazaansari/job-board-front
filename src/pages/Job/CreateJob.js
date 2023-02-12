@@ -47,7 +47,7 @@ const CreateJob = () => {
 
     return (
         <div className="d-flex justify-content-center mt-5">
-            <Form onSubmit={handleSubmit} style={{ width: "100%", maxWidth: "500px", padding: "10px" }}>
+            <Form onSubmit={handleSubmit} style={{ width: "100%", maxWidth: "500px", margin: "0px 10px" }}>
                 <Form.Group className="mb-3" controlId="formBasicTitle">
                     <Form.Label
                         style={{ fontSize: "25px" }}>
