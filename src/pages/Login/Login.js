@@ -5,6 +5,9 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
+const emailRegex = RegExp(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
+const passRegex = RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,15}$/)
+
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -71,6 +74,7 @@ const Login = () => {
                             type="email"
                             placeholder="Enter email"
                             size="lg"
+                            pattern={emailRegex.source}
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -81,7 +85,11 @@ const Login = () => {
                             type="password"
                             placeholder="Password"
                             size="lg"
+                            pattern={passRegex.source}
                         />
+                        <Form.Text id="passwordHelpBlock" muted>
+                        Password must be present in between 8 to 15 mixed with upper, lower and symbol letter
+                        </Form.Text>
                     </Form.Group>
                     <Button variant="primary" type="submit">
                         Login

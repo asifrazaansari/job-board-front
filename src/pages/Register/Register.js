@@ -4,6 +4,9 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const emailRegex = RegExp(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
+const passRegex = RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,15}$/)
+
 
 const Register = () => {
 
@@ -23,10 +26,10 @@ const Register = () => {
         }
 
         try {
-           const response =  await axios.post("https://job-board.up.railway.app/users", userData)
+            const response = await axios.post("https://job-board.up.railway.app/users", userData)
 
-           alert(`Successfully created account, ${response.data.data.name}, please Login to continue`)
-           navigate("/users/login")
+            alert(`Successfully created account, ${response.data.data.name}, please Login to continue`)
+            navigate("/users/login")
         } catch (error) {
             console.log(error)
         }
@@ -60,6 +63,7 @@ const Register = () => {
                         type="email"
                         placeholder="Enter email"
                         size="lg"
+                        pattern={emailRegex.source}
                     />
                 </Form.Group>
 
@@ -74,7 +78,11 @@ const Register = () => {
                         type="password"
                         placeholder="Password"
                         size="lg"
+                        pattern={passRegex.source}
                     />
+                    <Form.Text id="passwordHelpBlock" muted>
+                        Password must be present in between 8 to 15 mixed with upper, lower and symbol letter
+                    </Form.Text>
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
