@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-function CardComp({ link, text, job }) {
+function CardComp({ link, text, job, onEdit, onDelete }) {
     return (
         <div className='container mb-2'>
             <Card>
@@ -14,10 +14,13 @@ function CardComp({ link, text, job }) {
                         <p><b>Email: </b>{job.email}</p>
                     </Card.Text>
                     <Button
+                        style={{ marginRight: '10px' }}
                         href={link}
                         variant="primary">
                         {text}
                     </Button>
+                    {onEdit && <Button style={{ marginRight: '10px' }} variant='secondary' onClick={onEdit}>Edit</Button>}
+                    {onDelete && <Button variant='danger' onClick={onDelete}>Delete</Button>}
                 </Card.Body>
             </Card>
         </div>
@@ -25,18 +28,5 @@ function CardComp({ link, text, job }) {
     );
 }
 
-// {
-//     "_id": "63bf8e15f23799e0a8249ade",
-//     "title": "MYSQL Database",
-//     "description": "Good in RDBMS",
-//     "skills": "python, java, c, mysql, sql",
-//     "experience": "1+ years experience with SQL",
-//     "email": "ahmad@gmail.com",
-//     "user": "63bf6c860109d402d55a5ec9",
-//     "isDeleted": false,
-//     "createdAt": "2023-01-12T04:35:33.535Z",
-//     "updatedAt": "2023-01-12T04:35:33.535Z",
-//     "__v": 0
-// }
 
 export default CardComp;

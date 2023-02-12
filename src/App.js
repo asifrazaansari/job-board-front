@@ -7,6 +7,7 @@ import Application from './pages/Application/Application';
 import Home from './pages/Home/Home';
 import CreateJob from './pages/Job/CreateJob';
 import Job from './pages/Job/Job';
+import UpdateJob from './pages/Job/UpdateJob';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/jobs' element={<Job />} />
         <Route path='/jobs/create' element={<CreateJob />} />
+        <Route path='/jobs/:jobId' element={<UpdateJob />} />
         <Route path='/jobs/:jobId/apply' element={<Application />} />
         <Route path='/jobs/:jobId/applications' element={<AllApplicant />} />
       </Routes>
