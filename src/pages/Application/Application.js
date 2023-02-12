@@ -25,9 +25,10 @@ function Application() {
         const token = Cookies.get('token')
         setToken(token)
         if (!token) {
-            console.log("please login")
+            alert("please login")
+            navigate('/users/login')
         }
-    }, [])
+    }, [navigate])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
