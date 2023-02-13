@@ -4,8 +4,8 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
+import { emailRegex } from '../../validators/Validation';
 
-const emailRegex = RegExp(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
 
 const CreateJob = () => {
 

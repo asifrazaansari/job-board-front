@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useNavigate, useParams } from 'react-router-dom';
+import { emailRegex } from '../../validators/Validation';
 
 const UpdateJob = () => {
 
@@ -121,6 +122,7 @@ const UpdateJob = () => {
                         type="email"
                         placeholder="Enter email"
                         size="lg"
+                        pattern={emailRegex.source}
                     />
                 </Form.Group>
 

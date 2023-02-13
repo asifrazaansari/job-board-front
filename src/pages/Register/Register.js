@@ -3,9 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
-const emailRegex = RegExp(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
-const passRegex = RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,15}$/)
+import { emailRegex, passRegex, nameRegex } from '../../validators/Validation';
 
 
 const Register = () => {
@@ -46,9 +44,11 @@ const Register = () => {
                     <Form.Control
                         onChange={(e) => setName(e.target.value)}
                         value={name}
+                        required
                         type="text"
                         placeholder="Enter a name"
                         size="lg"
+                        pattern={nameRegex.source}
                     />
                 </Form.Group>
 
@@ -60,6 +60,7 @@ const Register = () => {
                     <Form.Control
                         onChange={(e) => setEmail(e.target.value)}
                         value={email}
+                        required
                         type="email"
                         placeholder="Enter email"
                         size="lg"
@@ -75,6 +76,7 @@ const Register = () => {
                     <Form.Control
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
+                        required
                         type="password"
                         placeholder="Password"
                         size="lg"

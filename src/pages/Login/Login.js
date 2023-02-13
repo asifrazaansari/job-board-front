@@ -4,9 +4,7 @@ import Form from "react-bootstrap/Form";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-
-const emailRegex = RegExp(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
-const passRegex = RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,15}$/)
+import { emailRegex, passRegex } from '../../validators/Validation';
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -71,6 +69,7 @@ const Login = () => {
                         <Form.Control
                             onChange={(e) => setEmail(e.target.value)}
                             value={email}
+                            required
                             type="email"
                             placeholder="Enter email"
                             size="lg"
@@ -82,6 +81,7 @@ const Login = () => {
                         <Form.Control
                             onChange={(e) => setPassword(e.target.value)}
                             value={password}
+                            required
                             type="password"
                             placeholder="Password"
                             size="lg"

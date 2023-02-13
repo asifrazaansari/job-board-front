@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Cookies from 'js-cookie';
 import { useNavigate, useParams } from 'react-router-dom';
+import { emailRegex, nameRegex } from '../../validators/Validation';
 
 function Application() {
 
@@ -64,8 +65,10 @@ function Application() {
                         <Form.Control
                             onChange={(e) => setFname(e.target.value)}
                             value={fname}
+                            required
                             type="text"
                             placeholder="Enter first name"
+                            pattern={nameRegex.source}
                         />
                     </Form.Group>
 
@@ -74,8 +77,10 @@ function Application() {
                         <Form.Control
                             onChange={(e) => setLname(e.target.value)}
                             value={lname}
+                            required
                             type="text"
                             placeholder="Enter last name"
+                            pattern={nameRegex.source}
                         />
                     </Form.Group>
                 </Row>
@@ -85,8 +90,10 @@ function Application() {
                     <Form.Control
                         onChange={(e) => setEmail(e.target.value)}
                         value={email}
+                        required
                         type="email"
                         placeholder="Enter email"
+                        pattern={emailRegex.source}
                     />
                 </Form.Group>
                 <Row className="mb-3">
@@ -95,6 +102,7 @@ function Application() {
                         <Form.Control
                             onChange={(e) => setResume(e.target.files[0])}
                             type="file"
+                            required
                             accept="application/pdf"
                         />
                     </Form.Group>
@@ -104,6 +112,7 @@ function Application() {
                         <Form.Control
                             onChange={(e) => setCoverLetter(e.target.files[0])}
                             type="file"
+                            required
                             accept=".pdf"
                         />
                     </Form.Group>
