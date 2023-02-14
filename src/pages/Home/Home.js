@@ -2,18 +2,21 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import CardComp from '../../components/CardComp'
 
-const Home = () => {
-
+const Home = ({ search }) => {
     const [jobs, setJobs] = useState([])
 
     const getJobs = async () => {
-        const response = await axios.get("https://job-board.up.railway.app/jobs")
+        const response = await axios.get("https://job-board.up.railway.app/jobs", {
+            params: {
+                title: search
+            }
+        })
         setJobs(response.data.data)
     }
 
     useEffect(() => {
         getJobs()
-    }, [])
+    }, [search])
 
     return (
         <div className='container'>

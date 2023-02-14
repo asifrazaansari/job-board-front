@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Cookies from "js-cookie";
 
-function NavScroll() {
+function NavScroll({onChange, value}) {
   
   const userName = localStorage.getItem("userName") || ""
 
@@ -36,6 +36,8 @@ function NavScroll() {
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              value={value}
+              onChange={onChange}
               style={{ width: '70%' }}
             />
             <Button variant="outline-success">Search</Button>

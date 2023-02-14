@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import NavScroll from './components/Navbar';
@@ -14,13 +14,21 @@ import Register from './pages/Register/Register';
 
 
 function App() {
+
+  const [search, setSearch] = useState('')
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value)
+  }
+
+
   return (
     <div className="App">
-      <NavScroll />
+      <NavScroll onChange={handleSearch} value={search} />
       <Routes>
         <Route path='/users/login' element={<Login />} />
         <Route path='/users' element={<Register />} />
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Home search={search} />} />
         <Route path='/jobs' element={<Job />} />
         <Route path='/jobs/create' element={<CreateJob />} />
         <Route path='/jobs/:jobId' element={<UpdateJob />} />
