@@ -26,6 +26,7 @@ function App() {
         <Route path='/jobs/:jobId' element={<UpdateJob />} />
         <Route path='/jobs/:jobId/apply' element={<Application />} />
         <Route path='/jobs/:jobId/applications' element={<AllApplicant />} />
+        <Route path='*' element={<h1>Page Not Found!</h1>} />
       </Routes>
 
     </div>
